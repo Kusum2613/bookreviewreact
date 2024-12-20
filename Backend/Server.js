@@ -15,6 +15,23 @@ app.use(bodyParser.json({ limit: '80mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+const mongoURI = 'mongodb://localhost:27017/Book_store';
+
+// Connect to MongoDB
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB successfully!');
+  })
+  .catch((err) => {
+    console.error('Failed to connect to MongoDB:', err);
+  });
+
+const Book = require('./models/Books');
+const User = require('./models/Books');
+const Review = require('./models/Review');
+
+
 const PORT =  3000;
 
 app.listen(PORT, () => {
